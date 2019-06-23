@@ -1,0 +1,41 @@
+import java.util.*;
+
+ public class GuessingGame{
+  public static void main (String [] args){
+    Scanner input = new Scanner(System.in);
+    bool playAgain = true;
+    while(playAgain){}
+      System.out.println("\n\nWelcome to my game! The computer will generate a number between 1 and 10. You will have three chances to guess the number.");
+      System.out.println("\nBeep Boop: Generating number");
+      int answer = (int) (Math.random  )*10;
+      answer++;
+      bool correct = false;
+      for(int guesses = 3; guesses>0 && correct == false; guesses--){
+        System.out.println("\nPlease enter your guess below: ");
+        int guess = input.nextInt();
+        if(guess == answer)
+          correct = true;
+        else{
+          System.out.println("Wrong answer. Try again.\nYou have " + guesses + "tries left.");
+        }
+      }
+      char userChoice;
+      if(correct == true){
+        System.out.println("Good job on getting the answer! Would you like to play again? (please enter 'Y' or 'N')\n");
+        userChoice = input.nextChar();
+        if(userChoice == 'Y')
+          playAgain = true;
+        else
+          playAgain=false;
+      }
+
+      else{
+        System.out.println("Awwww. Better luck next time! Would you like to play again? (please enter 'Y' or 'N')\n");
+        userChoice = input.nextChar();
+        if(userChoice == 'Y')
+          playAgain = true;
+        else
+          playAgain=false;
+      }
+    }
+  }
