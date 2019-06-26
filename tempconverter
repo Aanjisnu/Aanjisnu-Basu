@@ -1,0 +1,28 @@
+import java.util.*;
+public class tempConverter{
+  public static void main (String [] args){
+    Scanner input = new Scanner(System.in);
+    System.out.print("Welcome to temperature converter! Will you be converting:\nA) From Celsius to Fahrenheit\nB) From Fahrenheit to Celcius\nPlease enter A or B:\n");
+    char userAnswer = ((input.nextLine()).toLowerCase()).charAt(0);
+    if(userAnswer == 'a')
+      convertToF();
+    else
+      convertToC();
+  }
+
+  public static void convertToF(){
+    Scanner input = new Scanner(System.in);
+    System.out.print("Please enter the value (in Celsius): ");
+    float tempinput = input.nextFloat();
+    float tempoutput = (tempinput * 1.8F) +32F;
+    System.out.println("\n" + tempinput + " degrees Celcius is " + tempoutput + " degrees Fahrenheit.");
+  }
+
+  public static void convertToC(){
+    Scanner input = new Scanner(System.in);
+    System.out.print("Please enter the value (in Fahrenheit): ");
+    float tempinput = input.nextFloat();
+    float tempoutput = (tempinput -32)/1.8F;
+    System.out.println("\n" + tempinput + " degrees Fahrenheit is " + tempoutput + " degrees Celsius.");
+  }
+}
