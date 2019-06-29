@@ -1,40 +1,38 @@
-import java.util.scanner;
+import java.util.*;
 
-public class LargestNumber
-  { 
+public class largestNumber
+  {
     // instance variables - replace the example below with your own
-    private int x;
-  public LargestNumber(){
+    int x;
     public static void main (String [] args){
-              
+
               int number[], size, large ;
               Scanner user_input=new Scanner(System.in);
-              
-               System.out.print("Enter size of array");
+
+               System.out.print("Enter size of array: ");
               size=user_input.nextInt();
-              
+
               number= new int[size];
-              System.out.print("Enter elements of array");
-              
-                 
+              System.out.print("Enter elements of array:\n");
+
+
         for (int i=0;i<number.length; i++){
-        number[i]= user_input.nextInt();  
-             
-       }    
+        number[i]= user_input.nextInt();
+
+       }
 
     large=number[0];
-        for(int i=1;i<number.length;i++) 
+        for(int i=1;i<number.length;i++)
         {
           if(large<number[i])
          {
-          large=number[i];                
-       
+          large=number[i];
+
          }
          }
-     System.out.print("Largest Value is:"+large);
-     
+     System.out.print("Largest Value is: "+large + "\n");
+
     }
     }
-   
 
 
