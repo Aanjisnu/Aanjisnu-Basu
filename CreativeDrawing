@@ -1,0 +1,167 @@
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.WindowConstants;
+import java.awt.Dimension;
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Point;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseEvent;
+import java.awt.Font;
+import java.awt.FontMetrics;
+
+public class DrawingApp {
+    private JFrame frame;
+
+    public DrawingApp() {
+        frame = new JFrame("Mine Sweeper");
+        frame.setSize(600, 400);
+        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        frame.setPreferredSize(frame.getSize());
+        frame.add(new DrawFace(frame.getSize()));
+        frame.pack();
+        frame.setVisible(true);
+    }
+
+    public static void main(String... argv) {
+        new DrawingApp();
+    }
+
+    public static class DrawFace extends JPanel  implements MouseListener {
+        /*
+         * Declare Class Variables Here
+         */
+         int x = 20;
+         int y = 20;
+         boolean colorChange = false;
+        public DrawFace(Dimension dimension) {
+            setSize(dimension);
+            setPreferredSize(dimension);
+            addMouseListener(this);
+
+        }
+
+        @Override
+        public void paintComponent(Graphics g) {
+            Graphics2D g2 = (Graphics2D)g;//g2 is the graphics object that we need to use
+            //to draw things to the screen
+            Dimension d = getSize();
+            //create a background
+            g2.setColor(Color.white);
+            g2.fillRect(0, 0, d.width, d.height);
+            /**/
+
+            //face 
+            if (colorChange==true){
+            g2.setColor(Color.white); 
+        }else{
+            g2.setColor(Color.yellow); 
+        }
+            g2.fillOval(100,100, 350, 350);
+            //eyes
+            if (colorChange==true){
+            g2.setColor(Color.blue);
+        }else{
+            g2.setColor(Color.black);
+        }
+            
+            g2.fillOval(175,175, 50, 50);
+          
+            if (colorChange==true){
+            g2.setColor(Color.blue);
+        }else{
+            g2.setColor(Color.black);
+        }
+            g2.fillOval(320,175, 50, 50);
+            //mouth
+          
+            if (colorChange==true){
+            g2.setColor(Color.black);
+            g2.fillOval(230,350, 125, 175);
+        }else{
+            
+           g2.setColor(Color.red);
+            g2.fillOval(190,275, 175, 125);
+        }
+        
+            
+            
+            
+            if (colorChange==true){
+            g2.setColor(Color.white);
+            g2.fillOval(190,250,175, 125);
+        }else{
+            g2.setColor(Color.yellow);
+            g2.fillOval(190,250, 175, 125);
+        }
+        
+        
+            g2.fillOval(190,250, 175, 125);
+            //hair
+            //brown becmones a new instance of the Color class...
+            Color black = new Color(0,0,0); 
+            //...& brown can now be used as parameter in method setColor
+            g2.setColor(black);
+            g2.fillOval(60,130, 75, 75);
+            g2.fillOval(100,100, 75, 75);
+            g2.fillOval(140,70, 75, 75);
+            g2.fillOval(180,55, 75, 75);
+            g2.fillOval(220,55, 75, 75);
+            g2.fillOval(260,60, 75, 75);
+            g2.fillOval(300,80, 75, 75);
+            g2.fillOval(340,100, 75, 75);
+            g2.fillOval(380,110, 75, 75);
+            //nose
+            Color orange = new Color(255,128,0);//instance variable orange
+            g2.setColor(orange);
+            g2.fillOval(275,280,10, 10);
+            //hat
+            if (colorChange==true){
+            
+        }else{
+              Color purple= new Color(102,0, 102); 
+            g2.setColor(purple);
+            g2.fillRect(75, 75, 375, 50);
+            g2.fillRect(150, 25, 225, 100);
+        }
+        
+            
+            //display Text
+             g2.setColor(Color.black);
+            g2.setFont (new Font("TimesRoman", Font.PLAIN, 20));
+            g2.drawString("SCARED" , 350,500);//text to display, x and y coordinates
+
+
+
+        }
+
+        
+        
+        
+        public void mousePressed(MouseEvent e) {           
+            x = e.getX();
+             y = e.getY();
+             repaint();
+              colorChange = true;
+              
+             
+             
+        }
+
+        public void mouseReleased(MouseEvent e) {
+            
+            colorChange = false;
+        }
+
+        public void mouseEntered(MouseEvent e) {
+        }
+
+        public void mouseExited(MouseEvent e) {
+        }
+       //DO NOT USE THE METHOD BELOW
+       public void mouseClicked(MouseEvent e) {
+        
+          }
+    }
+}
