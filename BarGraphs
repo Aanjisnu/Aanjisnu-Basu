@@ -46,28 +46,39 @@ public class BarGraph {
 
         @Override
         public void paintComponent(Graphics g) {
-            Graphics2D g2 = (Graphics2D)g;//g2 is the graphics object that we need to use
+              Graphics2D g2 = (Graphics2D)g;//g2 is the graphics object that we need to use
             //to draw things to the screen
             Dimension d = getSize();
             //create a background
             
             g2.setColor(Color.white);
             g2.fillRect(0, 0, d.width, d.height);
-            /**/
+               /**/
 
-            //hat
-            Color purple= new Color(102,0, 102); //instance variable purple
-            g2.setColor(purple);
+            
+          
             //philly rain bar graphs
-            
-            Color green = new Color(10,255, 102); //instance variable purple
+             Color green = new Color(10,255, 102); //instance variable purple
             g2.setColor(green);
-            x = 5;
+            int xVal = 10;
             
-            g2.rect(10,10,10,24);
+            for(int i = 0; i<phila.length; i++){
+            g2.fillRect(xVal, 100, 10, (int) (phila[i] * 25));
+            xVal= xVal + 30;
+            
+            
+        }
             //seattle Bar graphs
-             
-             
+             Color purple= new Color(102,0, 102); //instance variable purple
+            g2.setColor(purple);
+         
+         xVal = 25;
+             for(int i = 0; i<seattle.length; i++){
+            g2.fillRect(xVal, 100, 10, (int) (seattle[i] * 25));
+            xVal= xVal + 30;
+            
+            
+        }
     
 
             //display Text
