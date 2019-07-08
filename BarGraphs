@@ -62,7 +62,7 @@ public class BarGraph {
             g2.setColor(green);
             int xVal = 10;
             
-            for(int i = 0; i<phila.length; i++){
+         for(int i = 0; i<phila.length; i++){
             g2.fillRect(xVal, 100, 10, (int) (phila[i] * 25));
             xVal= xVal + 30;
             
@@ -73,9 +73,9 @@ public class BarGraph {
             g2.setColor(purple);
          
          xVal = 25;
-             for(int i = 0; i<seattle.length; i++){
+          for(int i = 0; i<seattle.length; i++){
             g2.fillRect(xVal, 100, 10, (int) (seattle[i] * 25));
-            xVal= xVal + 30;
+             xVal= xVal + 30;
             
             
         }
