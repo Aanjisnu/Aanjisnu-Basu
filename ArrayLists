@@ -1,0 +1,20 @@
+import java.util.*;
+public class arrlist{
+  public static void main(String[] args){
+    ArrayList<Integer> temps = new ArrayList<>(Arrays.asList(4,32,40,50,55,70,73,75,70,65,55,40));
+    ArrayList<String> months = new ArrayList<>(Arrays.asList("Jan","Feb","Mar","Apr","May","June","July","Aug","Sep","Oct","Nov","Dec"));
+    int maxTemps=0;
+    int location = 0;
+    for(int i = 0; i<temps.size(); i++){
+      int iteration = temps.get(i);
+      if(maxTemps<iteration){
+        maxTemps = iteration;
+        location = i;
+      }
+    }
+
+    System.out.println("Highest value in ArrayList temps = " + temps.get(location));
+    System.out.println("ArrayList index number of that term = " + location);
+    System.out.println("Corresponding month = " + months.get(location));
+  }
+}
