@@ -1,0 +1,30 @@
+
+import java.awt.Color;
+public class Bubbles
+{
+    int x;
+    int y;
+    Color c;
+    int w;
+    int xSpeed;
+    int ySpeed;
+    
+     public Bubbles(int x, int y)
+     {
+        this.x = x;
+        this.y = y;
+        int max = 255;
+        int min = 0;
+        int randomNum = (int)(Math.random() * ((max - min) + 1));
+        int randomNum2 = (int)(Math.random() * ((max - min) + 1));
+        int randomNum3 = (int)(Math.random() * ((max - min) + 1));
+        
+        c = new Color (randomNum, randomNum2, randomNum3);
+        w = 20;
+        xSpeed = 10;
+        ySpeed = 10;
+        max = 40;
+    }
+
+  
+}
