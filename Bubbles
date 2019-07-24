@@ -1,5 +1,6 @@
 
 import java.awt.Color;
+import java.util.Random;
 public class Bubbles
 {
     int x;
@@ -9,6 +10,7 @@ public class Bubbles
     int xSpeed;
     int ySpeed;
     
+        
      public Bubbles(int x, int y)
      {
         this.x = x;
@@ -20,11 +22,15 @@ public class Bubbles
         int randomNum3 = (int)(Math.random() * ((max - min) + 1));
         
         c = new Color (randomNum, randomNum2, randomNum3);
-        w = 20;
-        xSpeed = 10;
-        ySpeed = 10;
+        Random rand = new Random();
+       
+        int w = rand.nextInt(101)+50;
+        xSpeed = 1;
+        ySpeed = 1;
         max = 40;
     }
 
   
 }
+
+
