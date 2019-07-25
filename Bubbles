@@ -1,4 +1,3 @@
-
 import java.awt.Color;
 import java.util.Random;
 public class Bubbles
@@ -24,13 +23,11 @@ public class Bubbles
         c = new Color (randomNum, randomNum2, randomNum3);
         Random rand = new Random();
        
-        int w = rand.nextInt(101)+50;
-        xSpeed = 1;
-        ySpeed = 1;
+        w = rand.nextInt(50)+5;
+        xSpeed = rand.nextInt(20)+5;
+        ySpeed = rand.nextInt(20)+5;
         max = 40;
     }
 
   
 }
-
-
