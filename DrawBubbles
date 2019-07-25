@@ -1,3 +1,4 @@
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.WindowConstants;
@@ -13,7 +14,7 @@ import java.awt.FontMetrics;
 import java.util.*;
 import javax.swing.Timer;
 
-public class DrawBubbles extends Bubbles {
+public class DrawBubbles{
 
     private JFrame frame;
 
@@ -43,7 +44,7 @@ public class DrawBubbles extends Bubbles {
          * Declare Class Variables Here
          */
         private Thread animator;
-        ArrayList<Bubble> b = new ArrayList<Bubble>();
+        ArrayList<Bubbles> b = new ArrayList<Bubbles>();
 
 
         public DrawBubs(Dimension dimension) {
@@ -55,7 +56,7 @@ public class DrawBubbles extends Bubbles {
                 animator = new Thread(this);
                 animator.start();
             }
-
+            
             setDoubleBuffered(true);
 
         }
@@ -69,33 +70,56 @@ public class DrawBubbles extends Bubbles {
             //to draw things to the screen
             Dimension d = getSize();
             
-          
             //create a background
             g2.setColor(Color.white);
             g2.fillRect(0, 0, d.width, d.height);
-              for (int i = 0; i<b.size(); i++){
+            
+            for (int i = 0; i < b.size(); i++){
                 
-                Bubble b = b.get(i);
+                Bubbles bub = b.get(i);
                 g2.setColor(bub.c);
-                g2. fillOval( bub.x, bub.y, bub.w, bub.w);
+                g2.fillOval(bub.x, bub.y, bub.w, bub.w);
+                
             }
 
-            /**/
+            moveBubbles();
+            detectSides();
+            
+        }//End of paint component
 
-        
+        public void moveBubbles(){
 
+             for (int i = 0; i < b.size(); i++){
+                Bubbles bub = b.get(i);
+                bub.x += bub.xSpeed;
+                bub.y += bub.ySpeed;
+            }
+            
         }
-
         
-       
+        public void detectSides(){
+            for (int i = 0; i < b.size(); i++){
+                Bubbles bub = b.get(i);
+                if(bub.x > 600 || bub.x < 0  ){
+                 bub.xSpeed *= -1;
+                }
+                
+                if(bub.y > 400 || bub.y < 0){
+                    bub.ySpeed *= -1;
+                }
+            }
+            
+            
+        }
+            
 
         public void mousePressed(MouseEvent e) {
 
             int x = e.getX();
             int y = e.getY();
            
-            Bubble bub = new Bubble (x,y);
-            b.add (bub);
+            Bubbles bub = new Bubbles (x,y);
+            b.add(bub);
             
             repaint();//updates the paint method
 
