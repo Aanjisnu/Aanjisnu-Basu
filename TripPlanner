@@ -1,0 +1,125 @@
+import java.util.Scanner;
+
+
+ public class MyTripPlanner
+{
+     static Scanner input = new Scanner (System.in);
+     
+     //DECLARE GLOBAL VARIABLES
+     public static String name; // The users name
+     
+     //DECLARE GLOBAL VARIBLES
+     public static int Days; //the amount of time the user will stay at the country
+
+     public static String Place;
+     public static int Money; // amount of money they will spend
+          
+     public static void intro(){ // The greeting
+           
+           System.out.println("Hi, I am your trip planner please input your name");
+        
+           name = input.next(); // The users name
+         
+           System.out.println("Hi "+ name +" where would you like to go");
+        
+           Place = input.next(); //The country the user would like to go
+         
+           System.out.println("Very nice " + Place +" is a really beautiful place"); 
+           
+            System.out.println("                  ");
+         
+           System.out.println(" *****************");// end of greeting
+         
+           System.out.println("                  ");
+        
+       
+    }
+     
+     public static void money(){ //Conversion of money and splitting into number of day
+           
+            System.out.println("How many days are you planning to spend in "+ Place +" ?");
+      
+           Days = input.nextInt(); 
+         
+         
+           System.out.println( "How much are you planning to spend, in USD?");
+         
+           
+         
+           Money = input.nextInt(); 
+         
+         
+           //The three letter currency symbol for the place they are going to
+           System.out.println( "What is the three letter currency symbol for the place you are travelling to?");
+         
+
+           String blank = input.nextLine();//blank line because of skipping
+           String Currency = input.nextLine();
+         
+           System.out.println("How many "+Currency+" are there in one USD");
+          
+           int Exchange; // Amount of the countries Dollar is there in one USD
+           Exchange = input.nextInt(); 
+          
+           int totalBudget = Money * Exchange;
+          
+           int moneySpentInOtherCurrency = totalBudget / Days;
+          
+           System.out.println( "Your total budget is "+totalBudget+" "+Currency+" and you can spend "+moneySpentInOtherCurrency+" "+Currency+" every day");
+
+          
+           int Hours = 24; // Hours in one day
+           int Minutes = 60; // Minutes in one day
+           int hoursInOneDay = 24 * Days; // time of vacation in hours
+           int minutesInOneDay = Days * Hours * 60; // time of vacation in minutes
+           int secondsInOneDay = Days * Minutes * 60; // time of vacation in seconds
+         
+           int moneySpent = Money / Days; // The budget they can  spend every day
+         
+          System.out.println( "If you are planning on spening "+Money+" in "+Days+" days then you can spend "+moneySpent+" USD every day");
+          System.out.println( "If you are travelling for "+Days+" days that will be "+hoursInOneDay+" hours, "+minutesInOneDay+" minutes and "+secondsInOneDay+" seconds");
+          
+          System.out.println("                  ");
+          System.out.println( " *****************");
+          System.out.println("                  ");//End of Money Part
+       
+    }
+     
+   public static void conversion(){//Cnverting the time and distance
+           
+            System.out.println("What is the time difference, in hours, between your home and the destination you are travelling to?");
+          
+
+          int time= input.nextInt(); //The time difference
+          
+          int timeDifference = time + 0; // Midnight
+          
+          int timeDifferenceNoon = time + 12; // Noon
+          
+          System.out.println("That means when it will be midnight at home it's going to be "+timeDifference+":00 at your destination and when its noon at home it's going be "+timeDifferenceNoon+":00 at your destination ");
+          
+          System.out.println("                  ");
+          System.out.println( " *****************");
+          System.out.println("                  ");//End of time
+          
+          
+          System.out.println(" What is the sqaure area of your destination country, in km ");
+          
+            int Kilometres ; // Amount of the countries Dollar is there in one USD
+            Kilometres = input.nextInt();
+            
+            double KilometresIntoMiles = Kilometres * Kilometres * 0.6;
+          
+            System.out.println(" In miles that is "+ KilometresIntoMiles+" ");
+          System.out.println( " *****************");
+        }
+        
+     public static void main(String[]args){
+         intro(); // Part One
+          money();//part Two
+          conversion();//part Three
+          
+     
+        }
+
+     } 
