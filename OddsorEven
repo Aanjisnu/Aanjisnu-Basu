@@ -1,0 +1,68 @@
+import java.util.*;
+public class OddorEven {
+    private static boolean odd;
+    private static Scanner input = new Scanner(System.in);
+    private static Random rand = new Random();
+    private static int compFingers;
+    private static int userFingers;
+    private static String name;
+    public static void main(String[]args){// main class, and intro 
+        System.out.println("\nLet\'s play a game called odds and evens!");
+        System.out.print("What is your name? ");
+        name = input.nextLine();
+        System.out.print("Hey " + name + "! Would you like to play as (O)dd or (E)ven? ");
+        String choice = String.valueOf((input.nextLine()).toUpperCase().charAt(0));
+        if(choice.equals("O")){
+            odd = true;
+            System.out.println(name + " has select Odds. Computer will play as Evens.");
+        }
+        else if(choice.equals("E")) {
+            odd = false;
+            System.out.println(name + " has select Evens. Computer will play as Odds.");
+        }
+        else{
+            System.out.println("Oops. We didn\t recognize that input. Please run the program again!");
+            System.exit(0);
+        }
+
+        numSelect();
+        results();
+      
+    }
+
+    private static void numSelect(){//selecting the amount of fingers they want to put up
+        boolean hasToSelect;
+        System.out.println("----------------------------------------------------------------------------");
+        do{
+            System.out.print("How many \"fingers\" would you like to put up? ");
+            userFingers = input.nextInt();
+            if(userFingers<=10)
+                hasToSelect = false;
+            else{
+                hasToSelect = true;
+                System.out.println("Uh oh! You can\'t put up more than 10 fingers!");
+            }
+        } while(hasToSelect);
+        compFingers = rand.nextInt(11);
+    }
+
+    private static void results(){// declaring the winner 
+        System.out.println(name + " put out " + userFingers + " fingers.");
+        System.out.println("Computer" + " put out " + compFingers + " fingers.");
+        System.out.println(userFingers + " + " + compFingers + " = " + (userFingers+compFingers));
+        if((userFingers+compFingers)%2 == 0){
+            if(odd) {
+                System.out.println((userFingers + compFingers) + " is even. You selected odd. Computer wins! Better luck next time...");
+            }else{
+                System.out.println((userFingers + compFingers) + " is even. You selected even. You win! Good Job!");
+            }
+        } else{
+            if(!odd) {
+                System.out.println((userFingers + compFingers) + " is even. You selected odd. Computer wins! Better luck next time...");
+            }else{
+                System.out.println((userFingers + compFingers) + " is even. You selected even. You win! Good Job!");
+            }
+        }
+
+    }
+}
