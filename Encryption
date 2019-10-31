@@ -1,0 +1,81 @@
+import java.util.*;
+import java.util.Scanner; 
+public class encryption{ //Encrypts the text
+     public static void main(String[] args) {
+     // take in string to be encrypted
+     
+        Scanner input = new Scanner(System.in); 
+        String freshInput = input.nextLine();
+        
+        //Normalising Text
+         String normalizedText = normalizeText(freshInput);
+         System.out.println(normalizedText);
+         
+         //Obifiy Text
+         String obifyText = obify(normalizedText);
+         System.out.println(obifyText);
+       
+         //ceasarify text 
+         String ceasarify = ceasarify(obifyText);
+         System.out.println(ceasarify);
+           ;
+    }
+    public static String normalizeText(String str)//takes all punctuation, white spaces and makes it capitalized
+     {
+       String freshInput = str.replaceAll("\\W", ""); //takes out punctuation
+       
+        String stringWithoutSpaces = freshInput.replaceAll("\\s+", ""); //takes out space
+         
+        //String upperCase = "+normalizeText+";
+        
+       String upper = stringWithoutSpaces.toUpperCase(); // makes everything uppercase
+        return upper; 
+    }
+    public static String obify(String str){// Adds OB ahead of a vowel and the letter Y
+       String obifiyText = "";
+        for (int i = 0; i < str.length(); i++) {
+        char temp = str.charAt(i);
+        if (temp == 'A' || temp == 'E' || temp == 'I' || temp == 'O' || temp == 'U' || temp == 'Y') {
+            obifiyText += "OB" + temp;
+        } else {
+            obifiyText += "" + temp;
+        }
+       }
+       return obifiyText;
+    }//
+    public static String ceasarify(int shift){// Shifts the letters by one down the alphabet 
+       int start = 0;
+       if (shift<0){
+           start = (int) 'Z' + shift + 1;
+        }else{
+            start = 'A' + shift; 
+        }
+       String result = ""; 
+       char currChar = (char) start; 
+       for(; currChar <= 'Z'; ++currChar){
+           result = result + currChar; 
+        }
+       if (result.length() < 26){
+         for (currChar = 'A'; result.length() < 26; ++currChar) {
+            result = result + currChar; 
+        }
+       }
+       return result; 
+       
+    }
+    public static String groupify(String str){
+        
+        
+        
+        return str;
+    }
+    public static String encryptString(String str){
+      //normalizeText(text);
+      //obify(normalizeText);
+      //ceasarify(obifiedText);
+      //groupify(ceasarifyText);
+      //print(groupifiedText);
+      
+      return str;
+    }
+}
