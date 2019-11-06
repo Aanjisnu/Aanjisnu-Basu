@@ -1,23 +1,28 @@
-import java.util.*;
+   import java.util.*;
 import java.util.Scanner; 
 public class encryption{ //Encrypts the text
      public static void main(String[] args) {
-     // take in string to be encrypted
-     
-        Scanner input = new Scanner(System.in); 
-        String freshInput = input.nextLine();
+      // take in string to be encrypted
+        System.out.println("Hi what message what you like to encrypt");//user interface
+        Scanner input = new Scanner(System.in); //used to see what was inputed 
+        String freshInput = input.nextLine();// used to encrypt the text
         
         //Normalising Text
-         String normalizedText = normalizeText(freshInput);
-         System.out.println(normalizedText);
+         String normalizedText = normalizeText(freshInput);//takes the fresh input in and takes out whitespaces,punctuation, and capitalizes it. 
+         System.out.println(normalizedText);// prints it
          
          //Obifiy Text
-         String obifyText = obify(normalizedText);
-         System.out.println(obifyText);
+         String obifyText = obify(normalizedText);// takes in the normalized text and adds o and b ahead of vowels and y
+         System.out.println(obifyText);// prints the new text
        
          //ceasarify text 
-         String ceasarify = ceasarify(obifyText);
-         System.out.println(ceasarify);
+         String ceasarify = ceasarify(3, obifyText);//takes in the orbified text and shifts it down the alphabet 
+         System.out.println(ceasarify);//prints new text 
+          
+         //groupify text
+         String groupify = groupify(3, ceasarify);//takes in the ceaserfiy and makes it into groups
+         System.out.println(groupify);// prints the final fully encrypted text 
+
            ;
     }
     public static String normalizeText(String str)//takes all punctuation, white spaces and makes it capitalized
@@ -41,41 +46,46 @@ public class encryption{ //Encrypts the text
             obifiyText += "" + temp;
         }
        }
-       return obifiyText;
-    }//
-    public static String ceasarify(int shift){// Shifts the letters by one down the alphabet 
-       int start = 0;
-       if (shift<0){
-           start = (int) 'Z' + shift + 1;
-        }else{
-            start = 'A' + shift; 
-        }
-       String result = ""; 
-       char currChar = (char) start; 
-       for(; currChar <= 'Z'; ++currChar){
-           result = result + currChar; 
-        }
-       if (result.length() < 26){
-         for (currChar = 'A'; result.length() < 26; ++currChar) {
-            result = result + currChar; 
-        }
-       }
-       return result; 
-       
+       return obifiyText;//
+    }//end of orbyfication 
+    public static String ceasarify(int caesarValue, String inputText){// Shifts the letters by one down the alphabet 
+       String returnString = inputText;
+    if(caesarValue>0){
+      for(int letter = 90; letter >=65; letter--){
+        int requiredLetter = letter+caesarValue;
+        returnString = returnString.replaceAll(Character.toString(((char)letter)), Character.toString((char) requiredLetter));
+      }
+    } else{
+      for(int letter = 65; letter <=90; letter++){
+        int requiredLetter = letter+caesarValue;
+        returnString = returnString.replaceAll(Character.toString(((char)letter)), Character.toString((char) requiredLetter));
+      }
     }
-    public static String groupify(String str){
-        
-        
-        
-        return str;
+    return returnString;
     }
-    public static String encryptString(String str){
-      //normalizeText(text);
-      //obify(normalizeText);
-      //ceasarify(obifiedText);
-      //groupify(ceasarifyText);
-      //print(groupifiedText);
-      
-      return str;
+    public static String groupify(int groups, String text ){//divides the text into equal groups 
+        String tempString = text;
+    int combine = 0;
+    ArrayList<Character> inputChars = new ArrayList<Character>();
+    for(char c : tempString.toCharArray()){
+      inputChars.add(c);
     }
+
+    int iteration = 0;
+    while(iteration<inputChars.size()){
+      if((iteration-combine)%groups == 0 && iteration != 0){// groups all the text
+        inputChars.add(iteration, ' ');
+        iteration++;
+        combine++;
+      }
+      iteration++;
+    }
+
+    String newText = "";
+    for(int i =0; i<inputChars.size(); i++){
+      newText = newText.concat(Character.toString(inputChars.get(i)));
+    }
+    return newText;
+    }
+    
 }
